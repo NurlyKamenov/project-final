@@ -15,10 +15,12 @@ import com.javarush.jira.common.util.Util;
 import com.javarush.jira.login.AuthUser;
 import com.javarush.jira.ref.RefType;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.time.DurationFormatUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -139,5 +141,32 @@ public class TaskService {
         if (!userType.equals(possibleUserType)) {
             throw new DataConflictException(String.format(assign ? CANNOT_ASSIGN : CANNOT_UN_ASSIGN, userType, task.getStatusCode()));
         }
+    }
+
+    public String durationTask(long id, String begin, String end) {
+
+
+        handler.getRepository().getExisted(id);
+        List<Activity> activities = activityHandler.getRepository().findAllByTaskIdOrderByUpdatedDesc(id);
+        LocalDateTime beginTime = null;
+        LocalDateTime endTime = null;
+        for (Activity activity : activities) {
+            if (activity.getStatusCode() != null && activity.getStatusCode().equals(begin)) {
+                beginTime = activity.getUpdated();
+            }
+
+            if (activity.getStatusCode() != null && activity.getStatusCode().equals(end)) {
+                endTime = activity.getUpdated();
+            }
+        }
+        if (beginTime==null) {
+            throw new DataConflictException("Begin time is null");
+        }
+        if (endTime==null) {
+            throw new DataConflictException("End time is null");
+        }
+
+        Duration duration = Duration.between(beginTime, endTime);
+        return duration.toString();
     }
 }
