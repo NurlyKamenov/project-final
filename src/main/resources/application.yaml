@@ -29,9 +29,11 @@ spring:
     url: ${DB_URL}
     username: ${DB_USERNAME}
     password: ${DB_PASSWORD}
-
   liquibase:
-    changeLog: "classpath:db/changelog.sql"
+    enabled: true
+
+  #  liquibase:
+#    changeLog: "classpath:db/changelog.sql"
 
   # Jackson Fields Serialization
   jackson:
