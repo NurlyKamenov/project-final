@@ -1,9 +1,9 @@
 # template for server
 app:
-  host-url: http://localhost
+  host-url: http://jira-app
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/jira
+    url: jdbc:postgresql://jira-app:5432/jira
     username: jira
     password: JiraRush
 

@@ -150,7 +150,15 @@ public class TaskController {
     public void delete(@PathVariable long id) {
         activityService.delete(id);
     }
+    @GetMapping("/workingTime/{id}")
+    public String getWorkingTime(@PathVariable long id) {
+        return taskService.durationTask(id, "in_progress", "ready_for_review");
+    }
 
+    @GetMapping("/testingTime/{id}")
+    public String getTestingTime(@PathVariable long id) {
+        return taskService.durationTask(id, "ready_for_review", "done");
+    }
     private record TaskTreeNode(TaskTo taskTo, List<TaskTreeNode> subNodes) implements ITreeNode<TaskTo, TaskTreeNode> {
         public TaskTreeNode(TaskTo taskTo) {
             this(taskTo, new LinkedList<>());
