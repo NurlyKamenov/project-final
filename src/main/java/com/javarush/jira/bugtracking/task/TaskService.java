@@ -152,6 +152,7 @@ public class TaskService {
         System.out.println(tags);
         tags.add(tag);
         task.setTags(tags);
+    }
 
 
     public String durationTask(long id, String begin, String end) {
