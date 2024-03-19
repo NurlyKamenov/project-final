@@ -3,10 +3,12 @@ package com.javarush.jira.bugtracking.task;
 import com.javarush.jira.common.BaseRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.lang.NonNull;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Transactional(readOnly = true)
 public interface TaskRepository extends BaseRepository<Task> {
