@@ -11,6 +11,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+
 @Getter
 @Setter
 public class TaskToExt extends TaskTo {
@@ -27,6 +28,8 @@ public class TaskToExt extends TaskTo {
     @Nullable
     @Positive
     Integer estimate;
+
+
 
     public TaskToExt(Long id, String code, String title, String description, String typeCode, String statusCode, String priorityCode,
                      LocalDateTime updated, Integer estimate, Long parentId, long projectId, Long sprintId) {
@@ -51,5 +54,6 @@ public class TaskToExt extends TaskTo {
                 Objects.equals(parentId, taskToExt.parentId) &&
                 Objects.equals(projectId, taskToExt.projectId) &&
                 Objects.equals(sprintId, taskToExt.sprintId);
+
     }
 }
