@@ -15,7 +15,6 @@ services:
       - .env
     networks:
       - backend
-      - frontend
 
   db:
     container_name: jira-db
@@ -43,13 +42,11 @@ services:
     volumes:
       - ./config/nginx.conf:/etc/nginx/nginx.conf:ro
     networks:
-      - frontend
+      - backend
     depends_on:
       app:
         condition: service_started
 
 networks:
   backend:
-    driver: bridge
-  frontend:
     driver: bridge

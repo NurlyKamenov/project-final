@@ -28,7 +28,7 @@ public class FileUtil {
                 Files.createDirectory(path);
 
             } catch (IOException e) {
-                throw new IllegalRequestDataException("Failed to create directory " + directoryPath);
+                throw new IllegalRequestDataException("Failed to create directory " + path);
             }
         }
         try {
