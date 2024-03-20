@@ -76,6 +76,7 @@ spring:
     init:
       mode: always
       data-locations: classpath:data4dev/data.sql
+      schema-locations: classpath:db/changelog.sql
 
   mail:
     properties:
