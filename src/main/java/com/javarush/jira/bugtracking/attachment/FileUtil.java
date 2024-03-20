@@ -25,7 +25,7 @@ public class FileUtil {
         Path path = Paths.get(directoryPath);
         if (!Files.exists(path)) {
             try {
-                Files.createDirectory(path);
+                Files.createDirectories(path);
 
             } catch (IOException e) {
                 throw new IllegalRequestDataException("Failed to create directory " + path);
